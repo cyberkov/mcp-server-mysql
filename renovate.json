@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 3am on Monday"]
+  },
+  "rangeStrategy": "bump",
+  "semanticCommits": "enabled",
+  "postUpdateOptions": ["npmDedupe"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2
+}

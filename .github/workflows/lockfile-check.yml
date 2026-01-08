@@ -1,0 +1,39 @@
+name: Lockfile Check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  check-lockfile:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      
+      - name: Check lockfile is up-to-date
+        run: |
+          pnpm install --frozen-lockfile
+          if [ -n "$(git status --porcelain pnpm-lock.yaml)" ]; then
+            echo "❌ pnpm-lock.yaml is out of sync with package.json"
+            echo "Please run 'pnpm install' and commit the updated lockfile"
+            exit 1
+          fi
+          echo "✅ Lockfile is up-to-date"
