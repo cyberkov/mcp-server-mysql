@@ -17,7 +17,6 @@
   },
   "rangeStrategy": "bump",
   "semanticCommits": "enabled",
-  "postUpdateOptions": ["npmDedupe"],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2
 }
