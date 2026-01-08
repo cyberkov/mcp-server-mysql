@@ -6,10 +6,13 @@ Thank you for your interest in contributing to this project!
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
+
 3. Build the project:
+
    ```bash
    pnpm build
    ```
@@ -36,6 +39,7 @@ When adding, removing, or updating dependencies:
 2. **Keep lockfile in sync**: The lockfile must stay in sync with `package.json`. Our CI pipeline validates this with the `--frozen-lockfile` flag.
 
 3. **Update the lockfile manually** if needed:
+
    ```bash
    pnpm install
    ```
@@ -45,21 +49,25 @@ When adding, removing, or updating dependencies:
 Before submitting a pull request:
 
 1. **Lint your code**:
+
    ```bash
    pnpm lint
    ```
 
 2. **Fix linting issues**:
+
    ```bash
    pnpm lint:fix
    ```
 
 3. **Build the project**:
+
    ```bash
    pnpm build
    ```
 
 4. **Run tests** (if MySQL is available):
+
    ```bash
    pnpm test
    ```
@@ -74,6 +82,7 @@ Our CI pipeline includes:
 - **Testing**: Unit, integration, and e2e tests
 
 If the lockfile check fails:
+
 1. Run `pnpm install` locally
 2. Commit the updated `pnpm-lock.yaml`
 3. Push your changes
@@ -81,11 +90,13 @@ If the lockfile check fails:
 ### Automated Dependency Updates
 
 This project uses [Renovate](https://docs.renovatebot.com/) to automatically:
+
 - Keep dependencies up-to-date
 - Maintain the lockfile with scheduled updates
 - Create pull requests for dependency updates
 
 Renovate is configured in `renovate.json` to:
+
 - Auto-merge minor and patch updates for stable packages (not 0.x.x)
 - Perform lockfile maintenance weekly (Monday before 3am)
 - Limit concurrent PRs to avoid overwhelming reviewers
