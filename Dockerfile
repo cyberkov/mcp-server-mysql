@@ -2,8 +2,8 @@
 # Use a Node.js Alpine image as the base
 FROM node:22-alpine AS builder
 
-# Install pnpm
-RUN npm install -g pnpm
+# Install pnpm (pin to 8.15 to match lockfile version 6.0)
+RUN npm install -g pnpm@8.15
 
 # Set the working directory
 WORKDIR /app
@@ -23,8 +23,8 @@ RUN pnpm run build
 # Use a new, clean image for the release
 FROM node:22-alpine
 
-# Install pnpm
-RUN npm install -g pnpm
+# Install pnpm (pin to 8.15 to match lockfile version 6.0)
+RUN npm install -g pnpm@8.15
 
 # Set the working directory
 WORKDIR /app
